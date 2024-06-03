@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import pandas as pd
 from io import StringIO
 import socket
+import os
 
 
 def find_free_port():
@@ -32,4 +33,6 @@ def convert_json_to_csv():
     return csv_data
 
 if __name__ == '__main__':
-    app.run(port=find_free_port(), debug=True)
+    port = find_free_port()
+    os.system('open http://127.0.0.1:' + str(port))
+    app.run(port=port, debug=False)
